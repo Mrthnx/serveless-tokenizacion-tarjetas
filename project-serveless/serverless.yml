@@ -1,0 +1,39 @@
+service: serverless-challenge
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs18.x
+  environment:
+     REDIS_HOST: ${env:REDIS_HOST}
+     REDIS_PORT: ${env:REDIS_PORT}
+     PRIVATE_KEY: ${env:PRIVATE_KEY}
+
+package:
+  include:
+    - dist/config/**
+    - dist/constants/**
+    - dist/dto/**
+    - dist/routes/**
+    - dist/services/**
+    - dist/utils/**
+    - dist/validation/**
+
+functions:
+  getToken:
+    handler: dist/routes/token.getToken
+    events: 
+      - httpApi:
+          method: get
+          path: /token/{id}    
+  saveToken:
+    handler: dist/routes/token.saveToken
+    events: 
+      - httpApi:
+          method: post
+          path: /token

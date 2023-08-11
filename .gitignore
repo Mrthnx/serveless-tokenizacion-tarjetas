@@ -1,0 +1,6 @@
+project-serveless/node_modules
+project-serveless/dist
+project-serveless/coverage
+.vscode
+.ide
+.env
