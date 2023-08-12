@@ -1,0 +1,22 @@
+version: '3'
+services:
+  redis:
+    build:
+      context: ./redis # Carpeta donde se encuentra el Dockerfile de Redis
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+  
+  aws-sdk-node16-serverless:
+    build:
+      context: ./node-aws-serveless # Carpeta donde se encuentra el Dockerfile de AWS SDK, Node.js v16 y Serverless Framework
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_DEFAULT_REGION=us-east-1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PRIVATE_KEY=12345678

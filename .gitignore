@@ -1,6 +1,10 @@
-project-serveless/node_modules
-project-serveless/dist
-project-serveless/coverage
+node-aws-serveless/project-serveless/node_modules
+node-aws-serveless/project-serveless/dist
+node-aws-serveless/project-serveless/coverage
 .vscode
 .ide
 .env
+
+coverage
+node_modules
+dist
